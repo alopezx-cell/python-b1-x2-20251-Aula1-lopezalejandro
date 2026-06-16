@@ -30,18 +30,20 @@ class Product:
         self.taxes = taxes
 
     def calculate_tax(self, tax: Tax) -> float:
+        # ojo: el ISD se multiplica por el factor, el IVA no
         valor = self.quantity * self.price * tax.percentage
-        if tax.tax_type == TaxType.ISD:
+        if tax.tax_type==TaxType.ISD:
             valor = valor * ISD_FACTOR
         return valor
 
     def calculate_total_taxes(self) -> float:
-        total = 0
+        total=0
         for tax in self.taxes:
-            total += self.calculate_tax(tax)
+          total += self.calculate_tax(tax)
         return total
 
     def calculate_total(self) -> float:
+        # total = precio * cantidad + impuestos
         return self.price * self.quantity + self.calculate_total_taxes()
 
     def __eq__(self, another):

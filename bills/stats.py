@@ -14,20 +14,21 @@ class Statistics:
         self.bills = bills
 
     def find_top_sell_product(self) -> (Product, int):
+        # contamos cuantas veces aparece cada producto en todas las facturas
         contador = {}
         for bill in self.bills:
-            for product in bill.products:
+          for product in bill.products:
                 if product in contador:
-                    contador[product] = contador[product] + 1
+                    contador[product]=contador[product] + 1
                 else:
-                    contador[product]=1
+                    contador[product] = 1
 
         top_product = None
         top_count = 0
         for product in contador:
             if contador[product] > top_count:
                 top_count = contador[product]
-                top_product = product
+                top_product=product
 
         return (top_product, top_count)
 

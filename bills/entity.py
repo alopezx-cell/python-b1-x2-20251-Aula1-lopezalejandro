@@ -19,11 +19,12 @@ class Person(ABC):
        return hash(self.dni)
 
 class Buyer(Person):
+    # comprador, hereda de Person
     def __init__(self, dni: str, email: str, mobile: str, full_name: str, age: int, address: str):
-        super().__init__(dni, email, mobile)
-        self.full_name = full_name
-        self.age = age
-        self.address = address
+      super().__init__(dni, email, mobile)
+      self.full_name = full_name
+      self.age = age
+      self.address=address
 
     def print(self):
         # Do not change this method
